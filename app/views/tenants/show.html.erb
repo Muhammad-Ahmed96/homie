@@ -1,0 +1,54 @@
+<section class="landloard-content main-landloard-profile-sec">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <%= render 'sidebar' %>
+        </div>
+        <div class="col-md-9">
+        	<div class="card card-default">
+            <div class="card-header">Notifications</div>
+            <div class="card-body">
+                <%= link_to notifications_path do %>
+                    You have <span id="num_of_unread"><%= current_user.unread %></span> notification(s).
+                <% end %>
+            </div>
+          </div>
+          <div class="landloard-rt-sec">
+          		
+            <div class="row">
+            
+            <div class="col-md-12">
+            	<div class="l-a-landloard-header">
+                <div class="row">
+                <div class="col-md-8">
+            	<h2 class="heading-level-02">Hi, I’m <%= @tenant.first_name%> <%= @tenant.last_name %></h2>
+                <ul class="profile-list">
+                	<li>Joined in <%= @tenant.created_at.strftime("%Y") %></li>
+                    <li><span><%= @requests.count %></span> active <%= 'request'.pluralize(@requests.count) %> <a href="<%= requests_path %>">View all</a></li>
+                </ul>
+                <p class="lives-in-paris-france">Lives in <%= @tenant.address %></p>
+                </div>
+                <div class="col-md-4 text-right">
+                	<a class="light-blue-btn" href="<%= edit_tenant_path %>"><i class="fa fa-pencil"></i> Edit Profile</a>
+                </div>
+                </div>
+                </div>
+                <div class="l-a-landloard-header tenant-a-header">
+                	<h5><%= @tenant.first_name%> <%= @tenant.last_name %></h5>
+                    <p><%= @tenant.information %></p>
+                    <ul class="credit-score-list mb-3">
+                    	<li><span class="credit-icon"><%= image_tag 'blue-credit-card.png' %></span> Credit Score: <span class="green"><%= @tenant.credit_score %></span></li>
+                        <li><span class="credit-icon"><%= image_tag 'businessman.png' %></span> Enployment Status: <span class="grey"><%= @tenant.employment_status %></span>
+                    </li>
+                    </ul>
+                    <p><strong><%= @tenant.from_year %>-<%= @tenant.to_year %></strong> - <%= @tenant.working_place %></p>
+                </div>
+                
+           </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- landloard-profile end here -->

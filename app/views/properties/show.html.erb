@@ -1,0 +1,198 @@
+<section class="landloard-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+         <!-- Sidebar here -->
+          <%= render 'sidebar' %>
+        </div>
+        <div class="col-md-9">
+        	
+          <div class="landloard-rt-sec">
+          		<div class="row">
+                	<div class="col-md-12">
+                    	<div class="back-to-req-sec">
+            	<a href="<%= properties_path %>" class="back-to-request">
+                	<span class="back-arrow"></span> <span>Back to Properties</span>
+                </a>	
+            </div>
+                    </div>
+                </div>
+            <div class="row">
+            
+            <div class="col-md-12">
+            	<div class="pro-l-open-property">
+                <div class="row">
+                 	<div class="col-md-6">
+                    <div id="sync1" class="owl-carousel">
+                      <% @property.images.each do |image| %>
+            				    <div class="item">
+            				      <%= image_tag image %>
+            				    </div>
+            				  <% end %>                 
+                    </div>
+                    <div id="sync2" class="owl-carousel">
+                      <% @property.images.each do |image| %>
+            				    <div class="item">
+            				      <%= image_tag image %>
+            				    </div>
+            				  <% end %>                  
+                    </div>
+                  </div>
+
+              	 <div class="col-md-6">              	 	
+              	 	<div class="row pro-l-head">
+                    <div class="col-md-8">
+                      <h4><%= @property.property_name %></h4>
+                      <span class="location-address"><%= @property.address %></span>
+                    </div>
+                    <div class="col-md-4 property-price">
+                      <h4>$<%= @property.price %></h4>
+                    </div>
+                  </div>
+                    
+                    <ul class="l-p-dtl-list">
+                    	<li><span class="f-icon"><%= image_tag("real-estate.png", :alt => "") %></span> <%= @property.home_type %></li>
+                        <li><span class="f-icon"><%= image_tag("shared.png", :alt => "") %></span> <%= @property.room_type %></li>
+                    	<li><span class="f-icon"><%= image_tag("bed-grey-icon-1.png", :alt => "") %></span><span class="f-count"><%= @property.bed_room %></span> Bedrooms</li>
+                        <li><span class="f-icon"><%= image_tag("accommodate.png", :alt => "") %></span><span class="f-count"><%= @property.accommodate %></span> Accommodate </li>
+                        <li><span class="f-icon"><%= image_tag("bathtub-grey-icon-1.png", :alt => "") %></span><span class="f-count"><%= @property.bath_room %></span> Bathrooms</li>
+                        <li><span class="f-icon"><%= image_tag("calendar.png", :alt => "") %></span><span class="f-count"><%= @property.minimum_lease %></span></li>
+                    </ul>              	 	                   
+                    
+                    
+                    <div class="row">
+                    	<div class="col-md-12">
+                        <div class="pro-btn-sec">
+                          <a href="<%= all_requests_property_path %>" class="light-blue-btn">Enquiries <span>(<%=@requests.length %>)</span></a>
+                          <% if @property.active? %>
+                            <%= link_to 'Deactivate', activate_property_path(@property),       method: :put, data: { confirm: 'This property would be deactivated' }, class: "light-red-btn" %>
+                          <% else %>
+                            <%= link_to 'Activate', activate_property_path(@property), method: :put, data: { confirm: 'This property would be activated' }, class: "light-red-btn" %>
+                          <% end %>
+                          <a href="<%= edit_property_path %>" class="light-red-btn" style="width: 100%; margin-top: 5px;">Edit</a>                         	
+                          
+                        </div>
+                      </div>
+                    </div>
+                 </div>
+
+                 <div class="col-md-12">
+                 	<div class="p-l-desc">
+                 	<p><%= @property.summary %></p>
+                    </div>
+                 </div>
+              </div>
+                            
+              <div class="row">
+              	<div class="col-md-12 mt-4 mb-4 pro-feature-sec">
+                	<h5>Features</h5>
+                	<ul class="features-list">
+                    	<% if @property.is_air %>
+                    		<li>                       	
+	                        	<div class="list-block"><div><span class="feature-img"><%= image_tag("air-conditioner.png", :alt => "") %></span><span>Airconditioning </span></div></div>
+	                        </li>                    		
+                    	<% end %>
+                    	<% if @property.is_parking %>
+                    		<li>                       	
+	                        	<div class="list-block"><div><span class="feature-img"><%= image_tag("parking.png", :alt => "") %></span><span>Parking/
+								Garage </span></div></div>
+	                        </li>                    		
+                    	<% end %>
+
+                    	<% if @property.is_washer %>
+                    		<li>                       	
+	                        	<div class="list-block"><div><span class="feature-img"><%= image_tag("washing-machine.png", :alt => "") %></span><span>Washing machine </span></div></div>
+	                        </li>
+                    	<% end %>
+
+                    	<% if @property.is_balcony %>
+                    		<li>                       	
+	                        	<div class="list-block"><div><span class="feature-img"><%= image_tag("balcony.png", :alt => "") %></span><span>Balcony</span></div></div>
+	                        </li>
+                    	<% end %>
+
+                    	<% if @property.is_fireplace %>
+                    		<li>                       	
+	                        	<div class="list-block"><div><span class="feature-img"><%= image_tag("fireplace.png", :alt => "") %></span><span>Fireplace</span></div></div>
+	                        </li>
+                    	<% end %>
+
+                    	<% if @property.is_internet %>
+                    		<li>                       	
+	                        	<div class="list-block"><div><span class="feature-img"><%= image_tag("smartphone.png", :alt => "") %></span><span>Wi-Fi</span></div></div>
+	                        </li>
+                    	<% end %>
+
+                    	<% if @property.is_gym %>
+                    		<li>                       	
+	                        	<div class="list-block"><div><span class="feature-img"><%= image_tag("gym.png", :alt => "") %></span><span>Gym</span></div></div>
+	                        </li>
+                    	<% end %>
+
+                    	<% if @property.is_pool %>
+                    		<li>                       	
+	                        	<div class="list-block"><div><span class="feature-img"><%= image_tag("swimming-pool.png", :alt => "") %></span><span>Pool/Hot Tub</span></div></div>
+	                        </li>
+                    	<% end %>              
+                        
+                        
+                    </ul>
+                </div>
+                
+                <div class="col-md-12 mb-4 pro-feature-sec">
+                	<h5>Additional Features</h5>
+                	<ul class="features-list">
+                    	<% if @property.is_dogs %>
+                    		<li>                       	
+	                        	<div class="list-block"><div><span class="feature-img"><%= image_tag("pet.png", :alt => "") %></span><span>Dogs</span></div></div>
+	                        </li>
+                    	<% end %>
+
+                    	<% if @property.is_cats %>
+                    		<li>                       	
+	                        	<div class="list-block"><div><span class="feature-img"><%= image_tag("cat.png", :alt => "") %></span><span>Cats</span></div></div>
+	                        </li>
+                    	<% end %>
+
+                    	<% if @property.is_wheelchair %>
+                    		<li>                       	
+	                        	<div class="list-block"><div><span class="feature-img"><%= image_tag("wheelchair.png", :alt => "") %></span><span>Wheelchair Access</span></div></div>
+	                        </li>
+                    	<% end %>
+
+                    	<% if @property.is_smoking %>
+                    		<li>                       	
+	                        	<div class="list-block"><div><span class="feature-img"><%= image_tag("smoke.png", :alt => "") %></span><span>Smoking</span></div></div>
+	                        </li>
+                    	<% end %>                 	
+                        
+                        
+                    </ul>
+                </div>
+                
+                
+              </div>
+              
+              <div class="row l-p-loction-sec">
+              	<div class="col-md-12"><hr></div>
+              	<div class="col-md-6">
+                	<h5>Location</h5>
+                </div>
+                <div class="col-md-6 text-right">
+                	<span class="location-address"><%= @property.address %></span>
+                </div>
+                <div class="col-md-12 l-p-l-map">
+                	<% if @property.address %>
+                    <%= render 'map' %>
+                  <% end %>				    
+                </div>
+              </div>
+              </div>
+           </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- landloard-profile end here -->

@@ -1,0 +1,61 @@
+<section class="landloard-content main-landloard-profile-sec">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <%= render 'sidebar' %>
+        </div>
+        <div class="col-md-9">
+        	<div class="card card-default">
+            <div class="card-header">Notifications</div>
+            <div class="card-body">
+                <%= link_to notifications_path do %>
+                    You have <span id="num_of_unread"><%= current_user.unread %></span> notification(s).
+                <% end %>
+            </div>
+          </div>
+
+          <div class="landloard-rt-sec">
+          		
+            <div class="row">
+            
+            <div class="col-md-12">
+            	<div class="l-a-landloard-header">
+                <div class="row">
+                <div class="col-md-8">
+            	<h2 class="heading-level-02">Hi, I’m <%= @landlord.first_name %> <%= @landlord.last_name %></h2>
+                <ul class="profile-list">
+                	<li>Joined in <%= @landlord.created_at.strftime("%Y") %></li>
+                    <li><span><%= @properties.count %></span> available <%= pluralize_without_count(@properties.count, 'property') %> <a href="<%= properties_path %>">View all</a></li>
+                </ul>
+                <p class="lives-in-paris-france">Lives in 
+					<% if @landlord.address %>
+						<%= @landlord.address %>
+					<% end %>
+                	</p>
+                </div>
+                <div class="col-md-4 text-right">
+                	<% if @landlord.user_id == current_user.id %>
+                       <a class="light-blue-btn" href="<%= edit_landlord_path %>"><i class="fa fa-pencil"></i> Edit Profile</a> 
+                    <% end %>
+                    
+                </div>
+                </div>
+                </div>
+                <div class="l-a-landloard-header">
+                	<h5><%= @landlord.first_name %> <%= @landlord.last_name %></h5>
+                    <p><%= @landlord.information %></p>
+                </div>                
+               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- landloard-profile end here -->
+<div class="container">
+	
+	<% if current_user && current_user != @landlord.user %>
+        <%= link_to "Send Message", conversations_path(sender_id: current_user.id, recepient_id: @landlord.user.id), method: :post, class: "btn btn-default" %>
+    <% end %>
+</div>
