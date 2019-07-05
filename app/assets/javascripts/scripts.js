@@ -428,7 +428,25 @@ jQuery('.visible-pw').click(function() {
             $($(this).children('img')[0]).attr("src","assets/visible.png");
         }
     }
-});	
+});
+
+$('.toggleTypeIcon1').click(function(){
+    if($($(this).closest('.user-label')).hasClass("active")){
+        $($(this).closest('.user-label')).removeClass("active");
+    }else{
+        $($(this).closest('.user-label')).addClass("active");
+        $('.toggleTypeIcon2').closest('.user-label').removeClass("active");
+    }
+});
+
+$('.toggleTypeIcon2').click(function(){
+    if($($(this).closest('.user-label')).hasClass("active")){
+        $($(this).closest('.user-label')).removeClass("active");
+    }else{
+        $($(this).closest('.user-label')).addClass("active");
+        $('.toggleTypeIcon1').closest('.user-label').removeClass("active");
+    }
+});
 
 
 
