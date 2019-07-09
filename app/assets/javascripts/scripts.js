@@ -57,14 +57,14 @@ window.onload = function(){
     }
 }
 
-function myFunction() {
-  var x = document.getElementById("password-input");
-  if (x.type === "password") {
-    x.type = "text";
-  } else {
-    x.type = "password";
-  }
-}
+// function myFunction() {
+//   var x = document.getElementById("password-input");
+//   if (x.type === "password") {
+//     x.type = "text";
+//   } else {
+//     x.type = "password";
+//   }
+// }
 jQuery(document).ready(function() {
 
 
@@ -414,9 +414,11 @@ jQuery('.check2').click(function() {
     jQuery('.landlord').toggleClass("active");
 });	 
 jQuery('.visible-pw').click(function() {
+    //debugger;
     $input = $($(this).closest('.form-group').find('input'));
     if($input.val() != "")
     {
+        debugger;
         if ($(this).hasClass("not-visible-pw"))
         {
             $input.attr("type","text");
