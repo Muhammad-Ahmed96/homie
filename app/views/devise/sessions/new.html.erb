@@ -8,12 +8,13 @@
                       <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "signin-form"}) do |f| %>
   
                         <div class="form-group">
-                          <span class="mail-icon"><%= image_tag("mail-icon.png", :alt => "mail-icon") %></span>    
+                          <%# <span class="mail-icon"><%= image_tag("mail-icon.png", :alt => "mail-icon") %>
+                          <span class="mail-icon"><%= image_tag('email.png') %></span>
                           <%= f.email_field :email, placeholder: "johndoe@gmail.com", class: "form-control", autofocus: true, autocomplete: "email" %>
                         </div>
 
                         <div class="form-group">
-                          <span class="lock-icon"><%= image_tag("padlock.png", :alt => "padlock") %> </span>
+                          <span class="lock-icon"><%= image_tag('lock.png') %></span>
                           <%= f.password_field :password, class: "form-control", placeholder: "password", id: "password-input", autocomplete: "current-password" %>    
                           <span class="visible-pw not-visible-pw"><%= image_tag("visible.png", :alt => "visible") %> <%= image_tag("not-visible.png", :alt => "not-visible") %></span>
                         </div>

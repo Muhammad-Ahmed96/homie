@@ -416,9 +416,8 @@ jQuery('.check2').click(function() {
 jQuery('.visible-pw').click(function() {
     //debugger;
     $input = $($(this).closest('.form-group').find('input'));
-    if($input.val() != "")
-    {
-        debugger;
+    // if($input.val() != "")
+    // {
         if ($(this).hasClass("not-visible-pw"))
         {
             $input.attr("type","text");
@@ -429,7 +428,7 @@ jQuery('.visible-pw').click(function() {
             $input.attr("type","password");
             $($(this).children('img')[0]).attr("src","assets/visible.png");
         }
-    }
+    // }
 });
 
 $('.toggleTypeIcon1').click(function(){
